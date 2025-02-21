@@ -5,13 +5,14 @@ import {
 } from "../types/rickAndMorty";
 import { fetchCharacterDetail, fetchCharacters } from "./rickandmortyService";
 
-global.fetch = vi.fn();
+// global.fetch = vi.fn();
 
-function createFetchResponse(data: any) {
-  return {
-    json: () => Promise.resolve(data),
-  };
-}
+// function createFetchResponse(data: any) {
+//   return {
+//     json: () => Promise.resolve(data as Response),
+//   };
+// }
+
 describe("Testa o service rickandmortySerivce", () => {
   test("Verifica se foi feito um get list para a url correta", async () => {
     const characterListResponse: RickandmortyType[] = [
@@ -47,7 +48,13 @@ describe("Testa o service rickandmortySerivce", () => {
       },
     ];
 
-    fetch.mockResolvedValue(createFetchResponse(characterListResponse));
+    global.fetch = vi.fn(() =>
+      Promise.resolve({
+        json: () => Promise.resolve(characterListResponse),
+      } as Response)
+    );
+
+    // fetch.mockResolvedValue(createFetchResponse(characterListResponse));
 
     const characterList = await fetchCharacters();
 
@@ -65,7 +72,11 @@ describe("Testa o service rickandmortySerivce", () => {
       species: faker.animal.type(),
     };
 
-    fetch.mockResolvedValue(createFetchResponse(characterDetailResponse));
+    global.fetch = vi.fn(() =>
+      Promise.resolve({
+        json: () => Promise.resolve(characterDetailResponse),
+      } as Response)
+    );
 
     const character = await fetchCharacterDetail(1);
 
