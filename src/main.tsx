@@ -1,10 +1,10 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import Login from "./assets/pages/Login/index.tsx";
+import { BrowserRouter } from "react-router-dom";
+import MainRoutes from "./routes.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Login />
-  </StrictMode>
+  <BrowserRouter>
+    <MainRoutes />
+  </BrowserRouter>
 );
