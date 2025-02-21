@@ -5,7 +5,7 @@ export const fetchCharacters = async () => {
 
   const data = await response.json();
 
-  return data.results;
+  return data;
 };
 
 export const fetchCharacterDetail = async (id: number) => {
