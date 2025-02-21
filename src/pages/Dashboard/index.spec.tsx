@@ -8,16 +8,24 @@ const mockFnFetchCharacters = vi
   .mockImplementation(async () => {
     return [
       {
-        id: 1,
-        name: "Rick Sanchez",
-        image: faker.image.url(),
-        species: "Human",
+        results: [
+          {
+            id: 1,
+            name: "Rick Sanchez",
+            image: faker.image.url(),
+            species: "Human",
+          },
+        ],
       },
       {
-        id: 2,
-        name: "Morty Smith",
-        image: faker.image.url(),
-        species: "Human",
+        results: [
+          {
+            id: 2,
+            name: "Morty Smith",
+            image: faker.image.url(),
+            species: "Human",
+          },
+        ],
       },
     ];
   });

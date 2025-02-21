@@ -28,10 +28,10 @@ export default function Dashboard({ fetchCharacters }: Iprops) {
 
       <ul className={styles["container-character"]}>
         {character.map((char: RickandmortyType, i) => (
-          <li key={i} onClick={() => handleNavigate(char.id)}>
-            <img src={char.image} alt={char.name} />
-            <strong>{char.name}</strong>
-            <span>{char.species}</span>
+          <li key={i} onClick={() => handleNavigate(char.results[0].id)}>
+            <img src={char.results[0].image} alt={char.results[0].name} />
+            <strong>{char.results[0].name}</strong>
+            <span>{char.results[0].species}</span>
           </li>
         ))}
       </ul>
